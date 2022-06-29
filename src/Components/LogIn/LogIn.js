@@ -79,6 +79,12 @@ const LogIn = () => {
                 </div>
             </div>
             {error && <p className='error'>{error}</p>}
+
+            <div className='demo'>
+                <h3>Credenciales</h3>
+                <p>Email: demo-pedidos@gmail.com</p>
+                <p>Contraseña: demo-pedidos123</p>
+            </div>
         </div>
     )
 }

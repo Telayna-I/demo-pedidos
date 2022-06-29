@@ -29,7 +29,7 @@ const NavBar = () => {
 
     return(
         <header>
-            <NavLink to = {`/login`} className = "logo">La Repostera</NavLink>
+            <NavLink to = {`/login`} className = "logo">Demo Pedidos</NavLink>
             <nav ref={navRef}>
                 { loged === true &&
                 <NavLink className = {"nav-link"} onClick={showNavBar}
