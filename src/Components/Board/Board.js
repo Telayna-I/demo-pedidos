@@ -5,7 +5,8 @@ import BoardList from '../BoardList/BoardList'
 
 const Board = () => {
     
-    const { listOrders } = useOrder()
+    const { listOrders, estado } = useOrder()
+
 
     const [ pedidos, setPedidos] = useState([])
     const [processingOrder, setProcessingOrder] = useState(false)
@@ -19,9 +20,8 @@ const Board = () => {
         }).finally(()=>{
             setProcessingOrder(false)
         })
-    },[])
+    },[estado])
 
-    // console.log(orders.orders[0].nombre)
 
 
     if(processingOrder){

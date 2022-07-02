@@ -6,12 +6,15 @@ import { dataBase } from '../../Services/Firebase/firebase';
 import { writeBatch, getDoc, doc, deleteDoc } from 'firebase/firestore';
 import { useForm } from 'react-hook-form'
 import { FaPhoneAlt, FaCalendarAlt, FaRegMoneyBillAlt, FaBalanceScale, FaShoppingCart, FaClock} from "react-icons/fa";
+import { useOrder } from '../../Context/OrderContext'
 import { CgProfile } from "react-icons/cg";
 import { MdDangerous, MdContentCopy } from "react-icons/md";
 
 
 const Order = ( { ...order } ) => {
     const { pedido } = {...order}
+
+    const { setEstado, estado } = useOrder()
 
     const batch = writeBatch(dataBase);
 
@@ -31,7 +34,7 @@ const Order = ( { ...order } ) => {
                 })
             }
             batch.commit().then(()=>{
-                window.location.reload(false);
+                setEstado(!estado)
             })
         }).catch((err)=>{
             console.log(err)
@@ -40,7 +43,7 @@ const Order = ( { ...order } ) => {
 
     const eliminar = async () => {
         await deleteDoc(doc(dataBase, "orders", pedido.id)).then(()=>{
-            window.location.reload(false);
+            setEstado(!estado)
         })
     }
 
@@ -63,7 +66,7 @@ const Order = ( { ...order } ) => {
                 },
             })
             batch.commit().then(()=>{
-                window.location.reload(false);
+                setEstado(!estado)
             })
         }).catch((err)=>{
             console.log(err)

@@ -16,6 +16,7 @@ export const useOrder = () => {
 const OrderContextProvider = ( { children } ) => {
 
     const [idPedido, setIdPedido] = useState()
+    const [estado, setEstado] = useState()
 
 
     
@@ -87,7 +88,7 @@ const OrderContextProvider = ( { children } ) => {
 
 
     return (
-        <OrderContext.Provider value = {{ confirmOrder, idPedido, listOrders }}>
+        <OrderContext.Provider value = {{ confirmOrder, idPedido, listOrders, estado, setEstado }}>
             { children }
         </OrderContext.Provider>
     );
